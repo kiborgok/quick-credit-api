@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Quick credit api",
   "main": "index.js",
+  "engines": {
+    "npm": "6.13.6",
+    "node": "12.16.2"
+  },
   "scripts": {
     "dev": "nodemon",
     "start": "./index.js"
