@@ -1,5 +1,4 @@
 {
-    "PORT": 5000,
     "NODE_ENV": "development",
     "MONGO_URI": "mongodb+srv://kiborgok:Matesya1@uplift-tdpp1.mongodb.net/quickcredit?retryWrites=true&w=majority",
     "EMAIL_HOST": "smtp.gmail.com",
