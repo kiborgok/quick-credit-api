@@ -146,17 +146,17 @@ authRoutes.post('/signup', async (req, res) => {
         await newUser.save();
 
         let transport = nodemailer.createTransport({
-            host: config.get("EMAIL_HOST"),
-            port: config.get("EMAIL_PORT"),
+            host: process.env.EMAIL_HOST || config.get("EMAIL_HOST"),
+            port: process.env.EMAIL_PORT || config.get("EMAIL_PORT"),
             secure: true,
             auth: {
-                user: config.get("EMAIL_SENDER"),
-                pass: config.get("EMAIL_SENDER_PASS"),
+                user: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
+                pass: process.env.EMAIL_SENDER_PASS || config.get("EMAIL_SENDER_PASS"),
             },
         });
 
         const message = {
-            from: config.get("EMAIL_SENDER"),
+            from: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
             to: email,
             subject: "Quick Credit",
             html: ` <div>
