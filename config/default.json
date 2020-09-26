@@ -1,10 +1,10 @@
 {
     "PORT": 5000,
     "NODE_ENV": "development",
-    "MONGO_URI": "mongouri",
+    "MONGO_URI": "mongodb+srv://kiborgok:Matesya1@uplift-tdpp1.mongodb.net/quickcredit?retryWrites=true&w=majority",
     "EMAIL_HOST": "smtp.gmail.com",
     "EMAIL_PORT": 465,
-    "EMAIL_SENDER": "email",
-    "EMAIL_SENDER_PASS": "emailpass",
-    "TOKEN_SECRET": "yoursecret"
+    "EMAIL_SENDER": "alexvanellope@gmail.com",
+    "EMAIL_SENDER_PASS": "Matesya1@#$",
+    "TOKEN_SECRET": "hvhfv7bhg8fvhvjkh28hkBGYGB!@%(ikhi_l"
 }
