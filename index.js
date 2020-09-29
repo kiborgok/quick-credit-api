@@ -24,6 +24,17 @@ const { authRoutes, loanRoutes } = require("./routes");
     app.use(express.urlencoded({ extended: true }));
     app.use(bodyParser.json());
 
+      // Serve static assets if in production
+      if (process.env.NODE_ENV === "production") {
+        // Set static folder
+        app.use(express.static("build"));
+        app.get("*", (req, res) => {
+          res.sendFile(
+            path.join(__dirname, "index.html")
+          );
+        });
+      }
+
     const apiRouter = express.Router();
     app.use("/api/v1", apiRouter);
     apiRouter.use("/auth", authRoutes);
