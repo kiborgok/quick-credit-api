@@ -10,7 +10,6 @@ const parseError = (err) => {
 //Verify JWT token
 const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
-
     if (authHeader) {
         const token = authHeader.split(' ')[1];
         jwt.verify(

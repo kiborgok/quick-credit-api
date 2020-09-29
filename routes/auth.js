@@ -1,7 +1,7 @@
 const express = require('express');
 const Joi = require('joi');
-const nodemailer = require('nodemailer');
-const config = require("config");
+// const nodemailer = require('nodemailer');
+// const config = require("config");
 const User = require('../models/user');
 const {
     signUp,
@@ -145,41 +145,41 @@ authRoutes.post('/signup', async (req, res) => {
         const accessToken = generateAccessToken(newUser);
         await newUser.save();
 
-        let transport = nodemailer.createTransport({
-            host: process.env.EMAIL_HOST || config.get("EMAIL_HOST"),
-            port: process.env.EMAIL_PORT || config.get("EMAIL_PORT"),
-            secure: true,
-            auth: {
-                user: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
-                pass: process.env.EMAIL_SENDER_PASS || config.get("EMAIL_SENDER_PASS"),
-            },
-        });
+        // let transport = nodemailer.createTransport({
+        //     host: process.env.EMAIL_HOST || config.get("EMAIL_HOST"),
+        //     port: process.env.EMAIL_PORT || config.get("EMAIL_PORT"),
+        //     secure: true,
+        //     auth: {
+        //         user: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
+        //         pass: process.env.EMAIL_SENDER_PASS || config.get("EMAIL_SENDER_PASS"),
+        //     },
+        // });
 
-        const message = {
-            from: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
-            to: email,
-            subject: "Quick Credit",
-            html: ` <div>
-                        <h3>Hi ${firstName},</h3>
-                        <p>Thank you for registering with us.</p>
-                        <p>Click here <a href='http://localhost:3000/verify'>http://localhost:3000/verify</a> to verify your account.</p>
-                        <p><b>Please NOTE: This link expires in 24hrs</b></p></br></br>
-                        <p>Regards,</p>
-                        <p><em>Admin</em></p>
-                    </div>`
-        };
+        // const message = {
+        //     from: process.env.EMAIL_SENDER || config.get("EMAIL_SENDER"),
+        //     to: email,
+        //     subject: "Quick Credit",
+        //     html: ` <div>
+        //                 <h3>Hi ${firstName},</h3>
+        //                 <p>Thank you for registering with us.</p>
+        //                 <p>Click here <a href='http://localhost:3000/verify'>http://localhost:3000/verify</a> to verify your account.</p>
+        //                 <p><b>Please NOTE: This link expires in 24hrs</b></p></br></br>
+        //                 <p>Regards,</p>
+        //                 <p><em>Admin</em></p>
+        //             </div>`
+        // };
 
-        transport.sendMail(message, function (err, info) {
-            if (err) {
-                res.json({
-                    'error': 'There was a problem'
-                });
-            } else {
-                res.json({
-                    'data': 'Mail sent'
-                });
-            }
-        });
+        // transport.sendMail(message, function (err, info) {
+        //     if (err) {
+        //         res.json({
+        //             'error': 'There was a problem'
+        //         });
+        //     } else {
+        //         res.json({
+        //             'data': 'Mail sent'
+        //         });
+        //     }
+        // });
 
         return res.json({
             'status': 200,
