@@ -8,8 +8,14 @@
     "node": "12.16.2"
   },
   "scripts": {
-    "dev": "nodemon",
-    "start": "node index.js"
+    "begin": "npm run build && node index.js",
+    "start": "node index.js",
+    "start:original": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node index.js",
+    "start:dev": "concurrently \"nodemon --ignore 'frontend/*'\" \"npm run frontend\"",
+    "client": "cd frontend && npm run start",
+    "install": "cd frontend && npm install",
+    "build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
