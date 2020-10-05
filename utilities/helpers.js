@@ -45,9 +45,9 @@ const generateAccessToken = (user) => {
             admin: user.admin,
             status: user.status,
         },
-        process.env.TOKEN_SECRET || config.get("TOKEN_SECRET"), {
+        process.env.TOKEN_SECRET || config.get("TOKEN_SECRET") /* {
             expiresIn: "24h"
-        }
+        } */
     );
 };
 
