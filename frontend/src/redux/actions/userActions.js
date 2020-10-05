@@ -80,11 +80,11 @@ export function signup(user) {
           .then((res) => res.json())
           .then((user) => {
             if (user.data) {
-              localStorage.setItem("verify", {
-                token: user.data.verificationToken,
-                email: user.data.email,
-              });
-              alert("Check mail to verify your account");
+            //   localStorage.setItem("verify", {
+            //     token: user.data.verificationToken,
+            //     email: user.data.email,
+            //   });
+              alert("Registered successfully. Login now");
               return dispatch(signInUserSuccess(user));
             }
             return dispatch(receiveErrors(user));

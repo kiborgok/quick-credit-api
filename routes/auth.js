@@ -126,7 +126,8 @@ authRoutes.post('/signup', async (req, res) => {
             secondName,
             username,
             email,
-            password
+            password,
+            status = "Verified"
         } = req.body;
         await Joi.validate({
             firstName,
@@ -140,7 +141,8 @@ authRoutes.post('/signup', async (req, res) => {
             secondName,
             username,
             email,
-            password
+            password,
+            status
         });
         const accessToken = generateAccessToken(newUser);
         await newUser.save();
