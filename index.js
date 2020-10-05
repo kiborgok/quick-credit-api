@@ -28,17 +28,17 @@ const { authRoutes, loanRoutes } = require("./routes");
       // Serve static assets if in production
     if (process.env.NODE_ENV === "production") {
       // Set static folder
-      app.use("/", express.static(path.join(__dirname, "../frontend/build")));
-
-      app.get("/*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-      });
+      app.use(express.static("frontend/build"));
     }
 
     const apiRouter = express.Router();
     app.use("/api/v1", apiRouter);
     apiRouter.use("/auth", authRoutes);
     apiRouter.use("/loans", loanRoutes);
+
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+    });
 
     app.listen(port, () => console.log(`Listening on port ${port}`));
   } catch (err) {
