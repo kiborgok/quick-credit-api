@@ -6,7 +6,6 @@ import AuthRoute from './auth/AuthRoute'
 import ProtectedRoute from './auth/ProtectedRoute'
 import Dashboard from './components/Dashboard'
 import Signup from './components/Signup';
-import UserStatusVerification from './components/UserStatusVerification';
 import Login from './components/Login';
 import Loan from './components/LoanApplication';
 import Profile from './components/Profile';
@@ -161,7 +160,6 @@ function App({ history }) {
           <div className="grid-container">
             <Switch>
               <Route path={["/dashboard", "/"]} exact component={Dashboard} />
-              <Route path="/verify" component={UserStatusVerification} />
               <AuthRoute path="/signup" component={Signup} />
               <AuthRoute path="/login" component={Login} />
               <ProtectedRoute path="/loanApplication" component={Loan} />
