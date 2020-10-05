@@ -1,0 +1,13 @@
+body {
+  font-family: cursive, Arial, Helvetica, sans-serif;
+  font-size: small;
+  color: black;
+  background-color: #43cea2;
+  background: url('/3244.jpg');
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
