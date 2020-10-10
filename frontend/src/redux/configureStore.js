@@ -1,7 +1,7 @@
 import {
     createStore,
     applyMiddleware,
-    compose
+    //compose
 } from 'redux';
 import rootReducer from './reducers/rootReducer';
 //import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
