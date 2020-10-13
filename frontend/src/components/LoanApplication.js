@@ -45,35 +45,28 @@ const Loan = ({ errors, actions }) => {
 
   }
   return (
-    <>
-      <div className="loan-form">
-        <header>
-          <h1>Apply for a loan</h1>
-        </header>
-        <div className='error'>{showError && errors}</div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
-            <label htmlFor="amount">Amount</label>
-            <input
-              type="range"
-              min="500"
+        <form className="form-signin" onSubmit={handleSubmit} noValidate>
+      <h1 className="h3 mb-3 font-weight-normal">Apply for a loan</h1>
+      {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
+      <label htmlFor="inputAmount" className="sr-only">Amount</label>
+      <input type="range"
+        className="form-control-range"
+        id = "formControlRange"
+        name="amount" min="500"
               max="50000"
               step="500"
-              id="amount"
-              name="amount"
               value={loan.amount}
-              onChange={handleChange}
-            />
+              onChange={handleChange} placeholder="Amount" />
             <output>{"ksh. " + loan.amount}</output>
-          </div>
-          <div className="form-row">
-            <label htmlFor="tenor">Period In Months</label>
-            <select
+            <label htmlFor="inputTenor" className="sr-only">Period In Months</label>
+      <select
+        className="form-control mb-2"
               as="select"
               id="tenor"
               name="tenor"
               value={loan.tenor}
-              onChange={handleChange}
+        onChange={handleChange}
+        placeholder = "Period In Months"
             >
               <option value={1}>1</option>
               <option value={3}>3</option>
@@ -81,13 +74,8 @@ const Loan = ({ errors, actions }) => {
               <option value={9}>9</option>
               <option value={12}>12</option>
             </select>
-          </div>
-          <div className="form-row">
-            <button>Request</button>
-          </div>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Apply</button>
         </form>
-      </div>
-    </>
   );
 }
 

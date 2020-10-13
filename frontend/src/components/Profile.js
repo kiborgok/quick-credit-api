@@ -19,48 +19,31 @@ const Profile = ({ actions, users, errors }) => {
 
   useEffect(() => setShowError(false), [])
   return (
-    <>
-      <div className="data-form" style={{ width: "57%" }}>
-        <header>
-          <h1>Account Details</h1>
-        </header>
-        <p className='error'>{showError && errors}</p>
-        {users.length === 0 ? 'No data' : (
+    <div className="form-signin">
+        <h1 className="h3 mb-3 font-weight-normal">Account Details</h1>
+        {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
+        {users.length === 0 ? <div className="spinner-border text-primary" role="status">
+  <span className="sr-only">Loading...</span>
+</div> : (
           <>
             {
-              users.map(user => (
-                <div
-                  key={user._id}
-                  style={{
-                    display: "flex",
-                    alignSelf: "center",
-                    flexDirection: "column",
-                    marginTop: "20px",
-                    borderRadius: "8px",
-                    padding: "15px",
-                    boxShadow: "0px 2px 10px 0px #185a9d",
-                  }}
-                >
-                  <p style={{ padding: "5px" }}>
-                    <em style={{ fontWeight: "bold" }}>First Name: </em>{" "}
-                    {user.firstName}
-                  </p>
-                  <p style={{ padding: "5px" }}>
-                    <em style={{ fontWeight: "bold" }}>Second Name:</em>{" "}
-                    {user.secondName}
-                  </p>
-                  <p style={{ padding: "5px" }}>
-                    <em style={{ fontWeight: "bold" }}>Email:</em>{" "}
-                    {user.email}
-                  </p>
-                </div>
+            users.map(user => (
+              <div className="card text-white bg-dark mb-2" style={{ maxWidth: "25rem"}}>
+  <div className="card-body">
+    <h5 className="card-title">First Name:</h5>
+                  <p className="card-text">{user.firstName}</p>
+                  <h5 className="card-title">Second Name:</h5>
+                  <p className="card-text">{user.secondName}</p>
+                  <h5 className="card-title">Email:</h5>
+                  <p className="card-text">{user.email}</p>
+  </div>
+</div>
               ))
             }
           </>
         )
         }
-      </div>
-    </>
+    </div>
   );
 };
 

@@ -21,38 +21,24 @@ const LoanRepaymentHistory = ({ actions, errors, history }) => {
 
   return (
     <>
-      <div className="data-form" style={{ width: "57%" }}>
-        <header>
-          <h1>Repayment History</h1>
-        </header>
-        <div className='error'>{showError && errors}</div>
+      <div className="form-signin">
+        <h1 className="h3 mb-3 font-weight-normal">Repayment History</h1>
+        {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
         {history.length === 0 ? 'You have no loan repayment history' : (
           <>
             {history.map((history) => (
               <div
-                key={history._id}
-                style={{
-                  display: "flex",
-                  alignSelf: "center",
-                  flexDirection: "column",
-                  marginTop: "20px",
-                  borderRadius: "8px",
-                  padding: "15px",
-                  boxShadow: "0px 2px 10px 0px #185a9d",
-                }}
-              >
-                <p>
-                  <em style={{ fontWeight: "bold" }}>Repayment Amount:</em>{" "}
-                  {"ksh. " + history.repaymentAmount}
-                </p>
-                <p>
-                  <em style={{ fontWeight: "bold" }}>Date:</em>{" "}
-                  {history.createdAt}
-                </p>
-                <p>
-                  <em style={{ fontWeight: "bold" }}>Loan Balance:</em>{" "}
-                  {"ksh. " + history.loanBalance}
-                </p>
+                key={history._id}>
+                <div className="card text-white bg-dark mb-2" style={{ maxWidth: "25rem" }}>
+                  <div className="card-body">
+                    <h5 className="card-title">Repayment Amount:</h5>
+                      <p className="card-text">{"ksh. " + history.repaymentAmount}</p>
+                        <h5 className="card-title">Date:</h5>
+                      <p className="card-text">{history.createdAt}</p>
+                      <h5 className="card-title">Loan Balance:</h5>
+                      <p className="card-text">{"ksh. " + history.loanBalance}</p>
+                  </div>  
+                </div>
               </div>
             ))}</>)}
       </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
@@ -49,47 +48,23 @@ const Login = ({ actions, errors, history }) => {
     },
   });
   return (
-    <>
-      <div className="login-form">
-        <header>
-          <h1>Sign In</h1>
-        </header>
-        <div className='error'>{showError && errors}</div>
-        <form onSubmit={formik.handleSubmit} noValidate>
-          <div className="form-row">
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              type="email"
-              {...formik.getFieldProps("email")}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className='error'>{formik.errors.email}</div>
+        <form className="form-signin" onSubmit={formik.handleSubmit} noValidate>
+        <h1 className="h3 mb-3 font-weight-normal">Please sign In</h1>
+        {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
+      <label htmlFor="inputEmail" className="sr-only">Email address</label>
+        <input type="email" name="email" id="inputEmail" className="form-control" placeholder="Email address" {...formik.getFieldProps("email")} autoFocus />
+        {formik.touched.email && formik.errors.email ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.email}</div>
             ) : null}
-          </div>
-          <div className="form-row">
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="password"
-              {...formik.getFieldProps("password")}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className='error'>{formik.errors.password}</div>
+      <label htmlFor="inputPassword" className="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" className="form-control" placeholder="Password" {...formik.getFieldProps("password")} />
+        {formik.touched.password && formik.errors.password ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.password}</div>
             ) : null}
-          </div>
-          <div className="form-row">
-            <button type='submit'>{loading ? "Loading..." : "Sign In"}</button>
-            <p style={{ padding: "4px", marginLeft: "3px" }}>
-              Don't have an account{" "}
-              <Link style={{ textDecoration: "none" }} to="/signup">
-                Signup
-                </Link>
-            </p>
-          </div>
-        </form>
-      </div>
-    </>
+      <button className="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+     
+    </form>
+  
   );
 }
 

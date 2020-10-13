@@ -1,11 +1,18 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = () => {
     const auth = JSON.parse(localStorage.getItem('jwt'));
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1 style={{ marginBottom: '2px' }}>{auth ? auth.user === 'Admin' ? `Welcome Admin` : `Welcome ${auth.username}` : `Welcome to Quick credit`}</h1>
-        </div>
+        <main role="main" className="inner cover">
+        <h1 className="cover-heading">{auth ? auth.user === 'Admin' ? `Welcome Admin` : `Welcome ${auth.username}` : `Welcome to Quick credit`}</h1>
+        <p className="lead">Easy, Simple and Quick way to get a loan.</p>
+            {
+                auth ? null : < p className="lead" >
+                    <NavLink to={"/login"} className="btn btn-lg btn-secondary">Sign In</NavLink>
+                </p>
+            }
+        </main>
     );
 }
 

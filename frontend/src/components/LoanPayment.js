@@ -35,16 +35,12 @@ const LoanPayment = ({ actions, errors, history }) => {
     pay();
   }
   return (
-    <>
-      <div className="loan-form">
-        <header>
-          <h1>Repay loan</h1>
-        </header>
-        <div className='error'>{showError && errors}</div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
-            <label htmlFor="amount">Amount</label>
-            <input
+           <form className="form-signin" onSubmit={handleSubmit} noValidate>
+      <h1 className="h3 mb-3 font-weight-normal">Repay loan</h1>
+      {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
+         <label htmlFor="inputAmount" className="sr-only">Amount</label>
+      <input
+        className="form-control"
               type="number"
               min="50"
               max="55000"
@@ -54,13 +50,8 @@ const LoanPayment = ({ actions, errors, history }) => {
               onChange={handleChange}
             />
             <output>{"ksh. " + amount}</output>
-          </div>
-          <div className="form-row">
-            <button>Repay</button>
-          </div>
-        </form>
-      </div>
-    </>
+      <button className="btn btn-lg btn-primary btn-block" type="submit">Repay</button>
+      </form>
   );
 }
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../redux/actions/userActions';
@@ -70,89 +69,42 @@ const Signup = ({ errors, actions, history }) => {
   });
 
   return (
-    <div className="signup-form">
-      <header>
-        <h1>Sign Up</h1>
-      </header>
-      <div className='error'>{showError && errors}</div>
-
-      <form onSubmit={formik.handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            name="firstName"
-            type="text"
-            {...formik.getFieldProps("firstName")}
-          />
-          {formik.touched.firstName && formik.errors.firstName ? (
-            <div className='error'>{formik.errors.firstName}</div>
-          ) : null}
-        </div>
-        <div className="form-row">
-          <label htmlFor="secondName">Second Name</label>
-          <input
-            name="secondName"
-            type="text"
-            {...formik.getFieldProps("secondName")}
-          />
-          {formik.touched.secondName && formik.errors.secondName ? (
-            <div className='error'>{formik.errors.secondName}</div>
-          ) : null}
-        </div>
-        <div className="form-row">
-          <label htmlFor="username">Username</label>
-          <input
-            name="username"
-            type="text"
-            {...formik.getFieldProps("username")}
-          />
-          {formik.touched.username && formik.errors.username ? (
-            <div className='error'>{formik.errors.username}</div>
-          ) : null}
-        </div>
-        <div className="form-row">
-          <label htmlFor="email">Email</label>
-          <input name="email" type="email" {...formik.getFieldProps("email")} />
-          {formik.touched.email && formik.errors.email ? (
-            <div className='error'>{formik.errors.email}</div>
-          ) : null}
-        </div>
-        <div className="form-row">
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            {...formik.getFieldProps("password")}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div className='error'>{formik.errors.password}</div>
-          ) : null}
-        </div>
-        <div className="form-row">
-          <label htmlFor="passwordConfirmation">Password-Confirmation</label>
-          <input
-            name="passwordConfirmation"
-            type="password"
-            {...formik.getFieldProps("passwordConfirmation")}
-          />
-          {formik.touched.passwordConfirmation &&
-            formik.errors.passwordConfirmation ? (
-              <div className='error'>{formik.errors.passwordConfirmation}</div>
+    <form className="form-signin" onSubmit={formik.handleSubmit} noValidate>
+        <h1 className="h3 mb-3 font-weight-normal">Please sign Up</h1>
+        {showError && errors ? <div className="alert alert-danger" role="alert">{showError && errors}</div> : null}
+        
+           <label htmlFor="firstName" className="sr-only">First Name</label>
+          <input type="text" name="firstName" id="inputFirstName" className="form-control" placeholder="First Name" {...formik.getFieldProps("firstName")} autoFocus />
+        {formik.touched.firstName && formik.errors.firstName ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.firstName}</div>
             ) : null}
-        </div>
-        <div className="form-row">
-          <button type='submit'>
-            Sign Up
-          </button>
-          <p style={{ padding: "4px", marginLeft: "3px" }}>
-            Already have an account{" "}
-            <Link style={{ textDecoration: "none" }} to="/login">
-              Login
-            </Link>
-          </p>
-        </div>
+           <label htmlFor="secondName" className="sr-only">First Name</label>
+          <input type="text" name="secondName" id="inputSecondName" className="form-control" placeholder="Second Name" {...formik.getFieldProps("secondName")} />
+          {formik.touched.secondName && formik.errors.secondName ? (
+            <div className="alert alert-danger" role="alert">{formik.errors.secondName}</div>
+          ) : null}
+           <label htmlFor="username" className="sr-only">First Name</label>
+          <input type="text" name="username" id="inputUsername" className="form-control" placeholder="Username" {...formik.getFieldProps("username")} />
+          {formik.touched.username && formik.errors.username ? (
+            <div className="alert alert-danger" role="alert">{formik.errors.username}</div>
+          ) : null}
+ <label htmlFor="inputEmail" className="sr-only">Email address</label>
+        <input type="email" name="email" id="inputEmail" className="form-control" placeholder="Email address" {...formik.getFieldProps("email")}/>
+        {formik.touched.email && formik.errors.email ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.email}</div>
+            ) : null}
+<label htmlFor="inputPassword" className="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" className="form-control" placeholder="Password" {...formik.getFieldProps("password")} />
+        {formik.touched.password && formik.errors.password ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.password}</div>
+            ) : null}
+        <label htmlFor="inputPasswordConfirmation" className="sr-only">Password_Confirmation</label>
+        <input type="password" name="passwordConfirmation" id="inputPasswordConfirmation" className="form-control" placeholder="Password Confirmation" {...formik.getFieldProps("passwordConfirmation")} />
+        {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation ? (
+              <div className="alert alert-danger" role="alert">{formik.errors.passwordConfirmation}</div>
+            ) : null}
+       <button className="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
       </form>
-    </div>
   );
 }
 

@@ -58,22 +58,20 @@ const LoanApplications = ({ errors, loans, actions }) => {
   });
   return (
     <>
-      <div className="data-form">
-        <header>
-          <h1>Loans</h1>
-        </header>
-        <p className='error'>{errors}</p>
-        <table>
+      <div>
+<h1 className="h3 mb-3 font-weight-normal">Loan Applications</h1>
+        {errors ? <div className="alert alert-danger" role="alert">{errors}</div> : null}
+        <table className="table table-dark">
           <thead>
             <tr>
-              <th>First Name</th>
-              <th>Second Name</th>
-              <th>Email</th>
-              <th>Amount</th>
-              <th>Period In Months</th>
-              <th>Balance</th>
-              <th>Status</th>
-              <th>View Loan</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Second Name</th>
+               <th scope="col">Email</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Period In Months</th>
+              <th scope="col">Balance</th>
+              <th scope="col">Status</th>
+              <th scope="col">View Loan</th>
             </tr>
           </thead>
           {loans.length !== 0 ? (
@@ -87,7 +85,7 @@ const LoanApplications = ({ errors, loans, actions }) => {
                   <td>{loan.tenor}</td>
                   <td>{loan.balance}</td>
                   <td>
-                    <button
+                    <span
                       onClick={() => {
                         loan.status === "Rejected"
                           ? actions.approveOrRejectLoan({
@@ -103,14 +101,14 @@ const LoanApplications = ({ errors, loans, actions }) => {
                       }}
                       className={
                         loan.status === "Pending"
-                          ? "pending"
+                          ? 'badge badge-pill badge-warning p-3'
                           : loan.status === "Approved"
-                            ? "approved"
-                            : "unverified"
+                            ? 'badge badge-pill badge-success p-3'
+                            : 'badge badge-pill badge-danger p-3'
                       }
                     >
                       {loan.status}
-                    </button>
+                    </span>
                   </td>
                   <td>
                     <Modal
@@ -118,7 +116,7 @@ const LoanApplications = ({ errors, loans, actions }) => {
                       loan={loanDetails}
                       handleClose={hideModal}
                     />
-                    <button
+                    < span className = "badge badge-pill badge-info p-2"
                       onClick={() => {
                         setLoanDetails({
                           amount: loan.amount,
@@ -133,7 +131,7 @@ const LoanApplications = ({ errors, loans, actions }) => {
                       }}
                     >
                       View
-                      </button>
+                      </span>
                   </td>
                 </tr>
               ))}

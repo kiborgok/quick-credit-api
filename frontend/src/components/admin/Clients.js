@@ -22,18 +22,16 @@ const Clients = ({ actions, errors, users }) => {
 
     return (
         <>
-            <div className='data-form'>
-                <header>
-                    <h1>Clients</h1>
-                </header>
-                <p className='error'>{errors}</p>
-                <table>
+            <div>
+                <h1 className="h3 mb-3 font-weight-normal">Clients</h1>
+                {errors ? <div className="alert alert-danger" role="alert">{errors}</div> : null}
+                <table className="table table-dark">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Second Name</th>
-                            <th>Email</th>
-                            <th>Status</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Second Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +41,11 @@ const Clients = ({ actions, errors, users }) => {
                                 <td>{user.secondName}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button
-                                        className={user.status === 'Verified' ? 'verified' : 'unverified'}
+                                    <span
+                                        className={user.status === 'Verified' ? 'badge badge-pill badge-success p-3' : 'badge badge-pill badge-warning p-3'}
                                     >
                                         {user.status}
-                                    </button>
+                                    </span>
                                 </td>
                             </tr>
                         )

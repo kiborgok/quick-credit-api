@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: cursive, Arial, Helvetica, sans-serif;
   font-size: small;
   color: black;
@@ -10,4 +10,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+body {
+  padding-top: 5rem;
+}
+
+.app {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="password"],
+.form-signin input[type="text"],
+.form-signin input[type="email"]
+ {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
