@@ -21,7 +21,9 @@ import {
   IoIosLogOut,
   IoMdPerson,
   IoIosPeople,
-  IoMdList
+  IoMdList,
+  IoMdLogIn,
+  IoMdPersonAdd
 } from "react-icons/io";
 
 function App({ history }) {
@@ -67,12 +69,12 @@ function App({ history }) {
               <>
                   <li className="nav-item">
                 <NavLink className="nav-link" to={"/signup"}>
-                      SignUp
+                      <IoMdPersonAdd size={24} /> SignUp
                     </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to={"/login"}>
-                      SignIn
+                    <IoMdLogIn size={24} />SignIn
                     </NavLink>
                 </li>
                 </>
